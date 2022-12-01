@@ -39,7 +39,14 @@ export function Home() {
 
       {
         // passa um map no vetor buscando as propriedades solicitadas
-        namesOnList.map(nameOnList => <Card name={nameOnList.name} time={nameOnList.time}/>)
+        namesOnList.map(nameOnList => (
+          <Card
+            // importante a utilização de uma chave unica geralmente é o id porém nao o caso
+            key={nameOnList.time} 
+            name={nameOnList.name} 
+            time={nameOnList.time}
+          />
+        ))
       }
     </div>
   )
