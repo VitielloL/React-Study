@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
-import { Card } from '../../components/Card';
+import { Card, CardProps } from '../../components/Card';
+
+type APIProfileResponse = {
+  name: string;
+  avatar: string;
+}
+
+type User = {
+  name: string;
+  avatar: string;
+}
 
 export function Home() {
   const [clientName, setClientName] = useState('valor inicia do useState');
   // clientName = nome do estado, SetClientName = função que atualiza o estado
-  const [namesOnList,setNamesOnList] = useState([])
-  const [user, setUser] = useState({ name:'', avatar: '' })
+  const [namesOnList,setNamesOnList] = useState<CardProps[]>([])
+  const [user, setUser] = useState<User>({} as User)
 
   // toda vez que handleAddNameOnList for chamada, irá criar um novo objeto com 2 propriedades, 
   // o nome que é pego do estado que armazena o conteudo atual do input e o time que pega do horario atual
@@ -32,7 +42,7 @@ export function Home() {
     // forma de fazer assincrona:
       // async function fetchData() {
       //   const response = await fetch('https://api.github.com/users/VitielloL')
-      //   const data = await response.json
+      //   const data = await response.json() as APIProfileResponse;
       //   setUser({
       //     name: data.name,
       //     avatar: data.avatar_url
