@@ -1,4 +1,4 @@
-# React-Study
+# React-study
 
 Estudo de React
 
